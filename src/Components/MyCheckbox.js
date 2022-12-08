@@ -1,13 +1,12 @@
 import { useField } from "formik";
-import { PropTypes } from "prop-types";
 
-const MyInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+const MyCheckbox = ({ label, ...props }) => {
+  const [field, meta] = useField({ ...props, type: "checkbox" });
 
   return (
     <div>
       <label htmlFor={props.name}>{label}</label>
-      <input {...field} {...props} />
+      <input {...field} {...props} type="checkbox" />
       {meta.error ? (
         <small className="alert alert-danger form-text text-muted">
           {meta.error}
@@ -16,5 +15,4 @@ const MyInput = ({ label, ...props }) => {
     </div>
   );
 };
-
-export default MyInput;
+export default MyCheckbox;
